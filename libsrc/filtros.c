@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "filtros.h"
 
+// Un comentario para probar el cambio desde Github
 
 void printstr(int num)
 {
