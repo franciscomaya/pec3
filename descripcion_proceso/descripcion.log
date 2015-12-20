@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.13)  19 DEC 2015 18:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.13)  19 DEC 2015 19:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -315,26 +315,40 @@ Overfull \hbox (26.86185pt too wide) in paragraph at lines 138--139
 anciscomaya/pec3 
  []
 
-[4] [5] [6] [7] [8] (./descripcion.aux) ) 
+[4] [5] [6] [7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 239.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 239.
+
+Overfull \hbox (24.52843pt too wide) in paragraph at lines 242--243
+[]\OT1/cmr/m/n/10 Se mo-tiv^^So la cu-riosi-dad so-bre temas que de-ber^^S^^Pan
+ ser de obli-ga-to-rio conocimiento
+ []
+
+[8] (./descripcion.aux) ) 
 Here is how much of TeX's memory you used:
- 2302 strings out of 495028
- 28442 string characters out of 6181496
+ 2319 strings out of 495028
+ 28734 string characters out of 6181496
  152899 words of memory out of 5000000
- 5546 multiletter control sequences out of 15000+600000
+ 5560 multiletter control sequences out of 15000+600000
  8054 words of font info for 29 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  26i,6n,40p,428b,1679s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
->
-Output written on descripcion.pdf (10 pages, 95096 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on descripcion.pdf (10 pages, 103974 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 65 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

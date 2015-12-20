@@ -212,16 +212,34 @@
 
   \item En la pestaña "Run", hacemos click sobre el botón "Show configuration" para revisar el proceso.
 
-  \item Por último se hace click en el botón "Run doxygen" y podemos dirigirnos hacia la ruta que especificamos en "Destination directory" para abrir el archivo index.html y revisar la documentación generada.
+  \item Se hace click en el botón "Run doxygen" y podemos dirigirnos hacia la ruta que especificamos en "Destination directory" para abrir el archivo index.html y revisar la documentación generada.
+
+  \item Una vez realizado todo esto actualizamos el repositorio ingresando los siguientes comandos:
+  \begin{lstlisting}
+  $ git status
+  $ git add .
+  $ git status
+  $ git commit -m "Agregar documentacion con Doxygen y LaTeX"
+  $ git status
+  \end{lstlisting}
+  Cada verificación del estado nos permite saber cómo va el proceso, partiendo del primero que nos dice que aún faltan archivos con agregar hasta el último que nos muestra que todo se encuentra listo para publicar.
+  Se omitió la explicación de estos comandos ya que fueron explicados en el primer punto de este PEC.
+
+  \item Por último enviamos todo a nuestro servidor en Github, momento en el cual se solicita nuestro usuario y clave para confirmar nuestra identidad, y así es actualizado el repositorio en el servidor.
+  \begin{lstlisting}
+  $ git push -u origin master
+  \end{lstlisting}
+  Se omitió la explicación de este comando ya que fue explicado en el primer punto de este PEC.
+
   \end{enumerate}
   \newpage
 
   \section{Conclusiones}
   \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
+  \item Se aprendió a configurar y utilizar el sistema de control de versiones Git. Además de su publicación en el sitio web Github.
+  \item Se identificó que utilizando las etiquetas que ofrece Doxygen se puede agilizar bastante la documentación de cualquier proyecto de software.
+  \item Se identificó mediante su utilización las ventajas de crear documentos con LaTeX. Permitiendo separar el contenido del diseño.
+  \item Se motivó la curiosidad sobre temas que deberían ser de obligatorio conocimiento cuando se es parte de un equipo de desarrollo de software.
+  \item Se dejó claro la importancia de profundizar en los comandos de Git para garantizar su buen uso en el momento de trabajar en equipos más grandes de desarrollo.
   \end{itemize}
 \end{document}
