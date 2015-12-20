@@ -39,6 +39,7 @@ void printstr(int num)
 * \see fs_nl() Filtro que numera las líneas de la entrada
 * \see fs_cut() Filtro que muestra la palabra que se encuentra en la posición dada
 * \param fd Descriptor de archivo
+* \var count LLeva el conteo de las líneas leídas
 * \return Impresión por salida estándar
 **/
 void fs_head( int fd )

@@ -1,8 +1,8 @@
 /** \file filtros.h
-* \brief Archivo de cabecera de la biblioteca de filtros para textos.
-* Se incluyen las cabeceras de las funciones que la biblioteca ofrece
 * \author Francisco Maya Sarasty
 * \date 19 de diciembre de 2015
+* \brief Archivo de cabecera de la biblioteca de filtros para textos.
+* Se incluyen las cabeceras de las funciones que la biblioteca ofrece
 **/
 
 void fs_head( int fd );
