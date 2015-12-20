@@ -1,0 +1,245 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
+\lstset{frame=tb,
+  language=sh,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\title{PEC3 Control de Versiones y Documentación}
+\author{Francisco Maya Sarasty}
+\date{19-12-2015}
+
+\begin{document}
+  \maketitle
+  \pagenumbering{gobble}
+  \newpage
+
+  \tableofcontents
+  \pagenumbering{gobble}
+  \newpage
+
+  \section{Introducción}
+  La tercera prueba de evaluación continua (PEC) de la asignatura de Desarrollo de Software del Master Universitario en Software Libre trata el tema de control de versiones y documentación. En esta PEC se crea un repositorio para el desarrollo controlado de la librería de filtros y se genera la documentación del código mediante la utilización de herramientas especializadas para cada trabajo.
+  \newline
+  \newline
+  En un principio se hace referencia al control de versiones mediante la creación de un repositorio con Git y se continua con la documentación del código mediante la utilización de Doxygen y LaTeX.
+  \pagenumbering{arabic}
+  \newpage
+
+  \section{Control de Versiones}
+  \begin{enumerate}
+
+  \item Nos ubicamos en el directorio para el cual aplicaremos el sistema de control de versiones
+  \begin{lstlisting}
+  $ git init
+
+  > Initialized empty Git repository in /home/francisco/ProMaestria/DesarrolloSW/PEC3/.git/
+  \end{lstlisting}
+  Ahora tenemos nuestro directorio "PEC3" donde se encuentra el repositorio en /.git/
+
+  \item Verificamos el estado actual del proyecto para ver que ha cambiado
+  \begin{lstlisting}
+  $ git status
+
+  > En la rama master
+  > Commit inicial
+  > nada que hacer...
+  \end{lstlisting}
+
+  \item Se crea los archivos en nuestro repositorio o directorio de trabajo, así que creamos el directorio "libsrc/" y dentro de este, los archivos "filtros.c" y "filtros.h"
+
+  \item Verificamos el estado del proyecto
+  \begin{lstlisting}
+  $ git status
+
+  > En la rama master
+  > Commit inicial
+  > Archivos sin seguimiento:
+  >	libsrc/
+  > no se ha agregado nada al commit pero existen archivos sin seguimiento...
+  \end{lstlisting}
+  Muestra que nuestros archivos aun no estan siendo manejados por Git
+
+  \item Ahora se escribe "git add ." para hacer seguimiento a todos los archivos o se hace para cada archivo con un comando similar a "git add libsrc/filtros.c"
+  \begin{lstlisting}
+  $ git add libsrc/filtros.c
+  $ git status
+
+  > En la rama master
+  > Commit inicial
+  > Cambios para hacer commit:
+  >	new file:   libsrc/filtros.c
+  > Archivos sin seguimiento:
+  >	libsrc/filtros.h
+  \end{lstlisting}
+  Nos muestra que se agrego en la lista para hacer "commit" el archivo "filtros.c", tal como se le especifico en el comando.
+
+  \item A continuacion agregamos todos los archivos para que queden en lista de seguimiento.
+  \begin{lstlisting}
+  $ git add .
+  $ git status
+
+  > En la rama master
+  > Commit inicial
+  > Cambios para hacer commit:
+  >	new file:   libsrc/filtros.c
+  >	new file:   libsrc/filtros.h
+  \end{lstlisting}
+  Nos muestra los archivos pendientes por hacer "commit", en este caso los dos de la biblioteca filtros.
+
+  \item Para aplicar los cambios hacemos el "commit" correspondiente con un mensaje para precisar sobre qué trata este "commit".
+  \begin{lstlisting}
+  $ git commit -m "Agregar biblioteca de filtros"
+
+  > [master (root-commit) 8926324] Agregar biblioteca de filtros
+  >  2 files changed, 107 insertions(+)
+  >  create mode 100644 libsrc/filtros.c
+  >  create mode 100644 libsrc/filtros.h
+  \end{lstlisting}
+
+  \item Se ejecuta nuevamente git status, lo que no muestra que no hay nada pendiente
+  \begin{lstlisting}
+  $ git status
+
+  > En la rama master
+  > nothing to commit, working directory clean
+  \end{lstlisting}
+
+  \item Una vez tenemos nuestro repositorio podemos hacer el "push" hacia el servidor de GitHub, para lo cual utilizaré mi propia cuenta de este sitio (https://github.com/franciscomaya/pec3.git)
+  \begin{lstlisting}
+  $ git remote add origin https://github.com/franciscomaya/pec3.git
+  \end{lstlisting}
+
+  \item Ahora se debe enviar los "commits" cuando se termine de modificar nuestra biblioteca
+  \begin{lstlisting}
+  $ git push -u origin master
+
+  > Username for 'https://github.com': franciscomaya
+  > Password for 'https://franciscomaya@github.com': 
+  > Counting objects: 5, done.
+  > Delta compression using up to 4 threads.
+  > Compressing objects: 100% (4/4), done.
+  > Writing objects: 100% (5/5), 984 bytes | 0 bytes/s, done.
+  > Total 5 (delta 0), reused 0 (delta 0)
+  > To https://github.com/franciscomaya/pec3.git
+  >  * [new branch]      master -> master
+  > Branch master set up to track remote branch master from origin.
+  \end{lstlisting}
+  Nos pide nuestro usuario y clave de Github y envia los archivos de nuestra biblioteca, como se puede comprobar en https://github.com/franciscomaya/pec3
+
+  \item Ahora supongamos que ha pasado ya un tiempo considerable desde nuestro último aporte y probablemente haya cambios en el repositorio de Github realizados por otros usuarios, revisamos los cambios en el repositorio de Github y bajamos cualquier nuevo cambio con el siguiente comando
+  \begin{lstlisting}
+  $ git pull origin master
+
+  > remote: Counting objects: 4, done.
+  > remote: Compressing objects: 100% (3/3), done.
+  > remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+  > Unpacking objects: 100% (4/4), done.
+  > De https://github.com/franciscomaya/pec3
+  >  * branch            master     -> FETCH_HEAD
+  >    8926324..54fcae2  master     -> origin/master
+  > Updating 8926324..54fcae2
+  > Fast-forward
+  >  libsrc/filtros.c | 1 +
+  >  1 file changed, 1 insertion(+)
+  \end{lstlisting}
+  Donde se evidencia que se modificó un archivo.
+
+  \item Si quisieramos colaborar en otro proyecto, es decir, queremos tener una copia completa de un repositorio de otro usuario, para eso se debe clonar su repositorio ubicándonos en el directorio donde se realizará la copia
+  \begin{lstlisting}
+  $ git clone https://github.com/franciscomaya/pec3.git
+
+  > Clonar en pec3...
+  > remote: Counting objects: 9, done.
+  > remote: Compressing objects: 100% (7/7), done.
+  > remote: Total 9 (delta 1), reused 4 (delta 0), pack-reused 0
+  > Unpacking objects: 100% (9/9), done.
+  > Checking connectivity... hecho.
+  \end{lstlisting}
+  Una vez hecho esto, tendremos nuestro repositorio local listo para realizar los trabajos que tengamos planeados para ese proyecto
+
+  \end{enumerate}
+  \newpage
+
+  \section{Documentación}
+  Documentamos los archivos de nuestra biblioteca (filtros.h y filtros.c), siguiendo los pasos que se describen a continuación:
+  \begin{enumerate}
+  \item Para generar una descripción de cada archivo utilizamos la etiqueta "file" y las etiquetas habituales como lo son "brief", "author" y "date" donde se explica algo general de lo que se encuentra en nuestro archivo.
+
+  \item En nuestro archivo "filtros.c" para cada función se documenta de manera abreviada y detallada el funcionamiento de la misma, sus parámetros, lo que devuelve y se enlaza hacia los otros filtros de la biblioteca, así como a las funciones internas que cada función utiliza.
+
+  \item Una vez terminamos de documentar nuestro trabajo, es momento de pasar a Doxygen para generar el código HTML de la documentación. Para facilitar nuestro trabajo utilizamos doxygen-gui para agilizar su configuración.
+
+  \item Ya en Doxygen GUI, especificamos el directorio de trabajo donde Doxygen se ejecutará, para este caso:
+ /home/francisco/ProMaestria/DesarrolloSW/PEC3
+
+  \item Configuramos Doxygen utilizando el asistente, entre otras, ingresamos la siguiente configuración en la pestaña "Wizard":
+  \begin{lstlisting}
+ Project
+  Project name: PEC3
+  Project synopsis: Tercera prueba de evaluacion continua
+  Source code directory: /home/francisco/ProMaestria/DesarrolloSW/PEC3
+   * Marcando la casilla "Scan recursively" para que busque en todos los directorios de la ruta especificada
+  Destination directory: /home/francisco/ProMaestria/DesarrolloSW/PEC3/doc
+
+ Mode
+  Select the desired extraction mode: 
+   Seleccionando "All entities"
+   * Marcando la casilla "Include cross-referenced source code in the output"
+  Select programming language to optimize the results for
+   Seleccionando "Optimize for C or PHP output"
+
+ Output
+  Select the output format(s) to generate
+   Marcando "HTML -> plain HTML"
+
+ Diagrams
+  Diagrams to generate
+   Seleccinando "Use built-in class diagram generator"
+  \end{lstlisting}
+
+  \item En la pestaña "Expert" cambiamos "OUTPUT LANGUAGE" A "Spanish" para que nuestra documentación de HTML aparezca en español.
+
+  \item En la pestaña "Run", hacemos click sobre el botón "Show configuration" para revisar el proceso.
+
+  \item Se hace click en el botón "Run doxygen" y podemos dirigirnos hacia la ruta que especificamos en "Destination directory" para abrir el archivo index.html y revisar la documentación generada.
+
+  \item Una vez realizado todo esto actualizamos el repositorio ingresando los siguientes comandos:
+  \begin{lstlisting}
+  $ git status
+  $ git add .
+  $ git status
+  $ git commit -m "Agregar documentacion con Doxygen y LaTeX"
+  $ git status
+  \end{lstlisting}
+  Cada verificación del estado nos permite saber cómo va el proceso, partiendo del primero que nos dice que aún faltan archivos con agregar hasta el último que nos muestra que todo se encuentra listo para publicar.
+  Se omitió la explicación de estos comandos ya que fueron explicados en el primer punto de este PEC.
+
+  \item Por último enviamos todo a nuestro servidor en Github, momento en el cual se solicita nuestro usuario y clave para confirmar nuestra identidad, y así es actualizado el repositorio en el servidor.
+  \begin{lstlisting}
+  $ git push -u origin master
+  \end{lstlisting}
+  Se omitió la explicación de este comando ya que fue explicado en el primer punto de este PEC.
+
+  \end{enumerate}
+  \newpage
+
+  \section{Conclusiones}
+  \begin{itemize}
+  \item Se aprendió a configurar y utilizar el sistema de control de versiones Git. Además de su publicación en el sitio web Github.
+  \item Se identificó que utilizando las etiquetas que ofrece Doxygen se puede agilizar bastante la documentación de cualquier proyecto de software.
+  \item Se identificó mediante su utilización las ventajas de crear documentos con LaTeX. Permitiendo separar el contenido del diseño.
+  \item Se motivó la curiosidad sobre temas que deberían ser de obligatorio conocimiento cuando se es parte de un equipo de desarrollo de software.
+  \item Se dejó claro la importancia de profundizar en los comandos de Git para garantizar su buen uso en el momento de trabajar en equipos más grandes de desarrollo.
+  \end{itemize}
+\end{document}
